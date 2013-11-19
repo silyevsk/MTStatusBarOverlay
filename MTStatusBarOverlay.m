@@ -811,10 +811,12 @@ kDetailViewWidth, kHistoryTableRowHeight*kMaxHistoryTableRowCount + kStatusBarHe
                      animations:^{
 		[self setHidden:YES useAlpha:YES];
 	} completion:^(BOOL finished) {
-		// call delegate
-		if ([self.delegate respondsToSelector:@selector(statusBarOverlayDidHide)]) {
-			[self.delegate statusBarOverlayDidHide];
-		}
+        if(finished) {
+            // call delegate
+            if ([self.delegate respondsToSelector:@selector(statusBarOverlayDidHide)]) {
+                [self.delegate statusBarOverlayDidHide];
+            }
+        }
 	}];
 }
 
